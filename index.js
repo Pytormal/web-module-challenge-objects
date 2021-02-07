@@ -11,20 +11,20 @@ const breakfastBurrito = { name: "Breakfast Burrito", price: 16, category: "Brea
 function createMenuItem(name, cost, category) {
 
 
-  return {name, price: cost, category}
+  return { name, price: cost, category }
 }
-console.log(createMenuItem("nice", 100, "Task 1a"))
+console.log('Task 1a',(createMenuItem("nice", 100, "hello")))
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
 
 function createMenuItems(name, cost, category) {
 
-  return {name, price: cost, category}
+  return { name, price: cost, category }
 }
 
-console.log(createMenuItems("Cake", 6, "Task 2b"))
-console.log(createMenuItems("Fries", 4, "Lunch"))
-console.log(createMenuItems("Cream Soda", 2, "Drinks"))
+console.log("Task 1b",(createMenuItems("Cake", 6, "desert")))
+console.log("Task 1b",(createMenuItems("Fries", 4, "Lunch")))
+console.log("Task 1b",(createMenuItems("Cream Soda", 2, "Drinks")))
 
 
 /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter. 
@@ -45,9 +45,9 @@ burger.discount = function (string) {
     return this.price * 0.9
   }
 }
-console.log(burger.discount('teacher') + " Teacher Discount Lunch Special 25% off")
-console.log(burger.discount('students') + " Student Discount Lunch Special 25% off")
-console.log(burger.discount('') + " public Lunch Special 25% off")
+console.log('task 2', (burger.discount('teacher') + " Teacher Discount Lunch Special 25% off"))
+console.log('task 2', (burger.discount('students') + " Student Discount Lunch Special 25% off"))
+console.log('task 2', (burger.discount('') + " public Lunch Special 25% off"))
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -64,11 +64,33 @@ const reviews = [{ name: "Daniela", rating: 5, feedback: "Beautiful atmosphere a
 
 /* Task 3: Console.log just Julius' feedback */
 
+console.log('task 3', (reviews[5].feedback))
+// console.log(reviews.map( x => x.feedback ))
+
+
+
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
+function addRating(array) {
+  return array.push({
+    name: "Alex Andrew Mallory",
+    rating: 2.5,
+    feedback:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
+  });
+}
+
+addRating(reviews);
+console.log('task 4', (reviews[8]))
+// console.log('task 4 all reviews', (reviews));
+
+/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays" */
+
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log('task 5', (reviews[7].feedback));
+// console.log('task 5 all reviews' (reviews));
 
 
-/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -82,9 +104,14 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * For example, if getReviewByIndex is invoked with reviews and the number 0
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
-function getReviewByIndex(reviews, index) {
-  /* code here */
+function getReviewByIndex(arr, index) {
+/* code here */
+  return (
+      arr[index].name + ' gave the restaurant a ' + arr[index].rating + ' star review and their feedback was: ' + arr[index].feedback
+  );
 }
+console.log('task 6', (getReviewByIndex(reviews, 0)));
+
 
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
@@ -92,13 +119,22 @@ function getReviewByIndex(reviews, index) {
 getLastReview should accept:
   (1) an array of objects 
   
-and should return a string in the format `name} gave the restaurant a {rating}, and their feedback was: {feedback}`
+and should return a string in the format `{name} gave the restaurant a {rating}, and their feedback was: {feedback}`
 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
-function getLastReview(/* code here */) {
-  /* code here */
+function getLastReview(arr) {
+/* code here */
+let Lreview = arr[Object.keys(arr)[Object.keys(arr).length - 1]]
+  console.log('task 7 last object',(Lreview));
+
+  return (
+    `${Lreview.name} gave the restaurant a ${Lreview.rating} and their feedback was: ${Lreview.feedback}`
+      // Lreview.name + ' gave the restaurant a ' + Lreview.rating + ' star review and their feedback was: ' + Lreview.feedback
+  )
 }
+
+console.log('task 7', (getLastReview(reviews)))
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
